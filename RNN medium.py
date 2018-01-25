@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 epochs = 100
 total_series_length = 50000
 truncated_backprop_length = 15
-state_size = 4 #number of hidden layers
+state_size = 4 #number of hidden PROPERTIES
 num_classes = 2
 echo_step = 3
 batch_size = 5
