@@ -40,9 +40,10 @@ for current in iterable_X:
     curr_hid_layer = tf.add(curr_hid_layer,B_Hidd)
     states_list.append(curr_hid_layer)
 
-logit_outputs = (tf.matmul(curr_hidd,W_Out)+ B_Out for curr_hidd in states_list)
-softmax_pred = (tf.nn.softmax(outputs) for outputs in logit_outputs)
+logit_outputs = [tf.matmul(curr_hidd,W_Out)+ B_Out for curr_hidd in states_list]
+softmax_pred = [tf.nn.softmax(outputs) for outputs in logit_outputs]
 loss = [tf.nn.sparse_softmax_cross_entropy_with_logits(logits = logits, labels = labels) for logits, labels in zip(logit_outputs, iterable_Y)]
+
 total_loss = tf.reduce_mean(loss)
 
 training = train_step = tf.train.AdagradOptimizer(learning_rate).minimize(total_loss)
@@ -50,7 +51,7 @@ training = train_step = tf.train.AdagradOptimizer(learning_rate).minimize(total_
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    for epoch in range(epochs):
+    for epoch in range(10):
         a_int = np.random.randint(largest_number/2)
         a = int2binary[a_int]
         a_np = np.matrix(a)
@@ -64,13 +65,9 @@ with tf.Session() as sess:
 
         pseudo_curr = np.zeros((1,HIDDEN))
         x = np.concatenate((a_np,b_np), axis=0)
-        print(x)
-        print("v")
-        print(c_np)
-        print("w")
-        test = sess.run(total_loss)
+        test = sess.run(softmax_pred,feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
         print(test)
-   #     predictions = sess.run([softmax_pred], feed_dict= {})#,Y:c_np,init_hid_layer:pseudo_curr})
+        #predictions,_total_loss,_ = sess.run([softmax_pred,total_loss,training], feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})#,Y:c_np,init_hid_layer:pseudo_curr})
 
 
         #print(predictions)
