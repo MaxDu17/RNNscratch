@@ -28,7 +28,7 @@ B_Out = tf.Variable(tf.zeros(shape = [1,1]), dtype =tf.float32)
 states_list = []
 output_list = []
 X = tf.placeholder(tf.float32, shape=[2,binary_dim])
-Y = tf.placeholder(tf.int32, shape = [1,binary_dim])
+Y = tf.placeholder(tf.float32, shape = [1,binary_dim])
 iterable_X = tf.unstack(X,axis=1)
 iterable_Y= tf.unstack(Y,axis=1)
 init_hid_layer = tf.placeholder(tf.float32, shape = [1,HIDDEN])
@@ -36,13 +36,14 @@ current_hid_layer = init_hid_layer
 for current in iterable_X:
     current_flat = tf.reshape(current,[1,INPUT])
     concat_mat = tf.concat([current_flat,current_hid_layer],axis=1)
-    curr_hid_layer = tf.matmul(concat_mat,W_Hidd)
+    curr_hid_layer = tf.tanh(tf.matmul(concat_mat,W_Hidd))
+
     curr_hid_layer = tf.add(curr_hid_layer,B_Hidd)
     states_list.append(curr_hid_layer)
 
 logit_outputs = [tf.matmul(curr_hidd,W_Out)+ B_Out for curr_hidd in states_list]
 softmax_pred = [tf.nn.softmax(outputs) for outputs in logit_outputs]
-loss = [tf.nn.sparse_softmax_cross_entropy_with_logits(logits = logits, labels = labels) for logits, labels in zip(logit_outputs, iterable_Y)]
+loss = [(logits - labels)**2 for logits,labels in zip(logit_outputs,iterable_Y)]
 
 total_loss = tf.reduce_mean(loss)
 
@@ -51,7 +52,7 @@ training = train_step = tf.train.AdagradOptimizer(learning_rate).minimize(total_
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    for epoch in range(10):
+    for epoch in range(1000):
         a_int = np.random.randint(largest_number/2)
         a = int2binary[a_int]
         a_np = np.matrix(a)
@@ -65,10 +66,11 @@ with tf.Session() as sess:
 
         pseudo_curr = np.zeros((1,HIDDEN))
         x = np.concatenate((a_np,b_np), axis=0)
-        test = sess.run(softmax_pred,feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
-        print(test)
-        #predictions,_total_loss,_ = sess.run([softmax_pred,total_loss,training], feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})#,Y:c_np,init_hid_layer:pseudo_curr})
 
+        #test = sess.run(loss,feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
+        #print(test)
+        predictions,_total_loss,_ = sess.run([softmax_pred,total_loss,training], feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})#,Y:c_np,init_hid_layer:pseudo_curr})
+        print(_total_loss)
 
         #print(predictions)
 

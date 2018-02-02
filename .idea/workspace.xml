@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="934021a6-35a4-4b8d-9579-d45e2246ff28" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/RNN medium.py" afterPath="$PROJECT_DIR$/RNN medium.py" />
       <change beforePath="$PROJECT_DIR$/RNNadd.py" afterPath="$PROJECT_DIR$/RNNadd.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="RNNadd.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RNNadd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+            <state relative-caret-position="1146">
+              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -28,8 +29,8 @@
       <file leaf-file-name="RNN medium.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RNN medium.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state relative-caret-position="420">
+              <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -90,6 +91,7 @@
       <find>life</find>
       <find>download</find>
       <find>dirname</find>
+      <find>num_classes</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -103,10 +105,10 @@
         <option value="$PROJECT_DIR$/testa.py" />
         <option value="$PROJECT_DIR$/scratch.py" />
         <option value="$PROJECT_DIR$/../TENSORFLOWRNNPREVUILT/train.py" />
-        <option value="$PROJECT_DIR$/RNN medium.py" />
         <option value="$PROJECT_DIR$/../DatasetMaker/FinalUI.py" />
         <option value="$PROJECT_DIR$/../../YT downloader/YoutubeDownloader-NewProg/ProcessStarter.py" />
         <option value="$PROJECT_DIR$/../../YoutubeDownloader-master/ProcessStarter.py" />
+        <option value="$PROJECT_DIR$/RNN medium.py" />
         <option value="$PROJECT_DIR$/RNNadd.py" />
       </list>
     </option>
@@ -288,8 +290,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.RNNadd" />
-        <item index="1" class="java.lang.String" itemvalue="Python.FinalUI" />
-        <item index="2" class="java.lang.String" itemvalue="Python.RNN medium" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RNN medium" />
+        <item index="2" class="java.lang.String" itemvalue="Python.FinalUI" />
         <item index="3" class="java.lang.String" itemvalue="Python.scratch" />
         <item index="4" class="java.lang.String" itemvalue="Python.testa" />
       </list>
@@ -547,8 +549,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RNN medium.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        <state relative-caret-position="420">
+          <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
@@ -557,8 +559,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RNNadd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+        <state relative-caret-position="1146">
+          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

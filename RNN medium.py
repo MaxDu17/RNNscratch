@@ -19,6 +19,7 @@ def generateData():
 
     x = x.reshape((batch_size, -1))
     y = y.reshape((batch_size, -1))
+    print(y)
     return (x, y)
 
 batchXPl = tf.placeholder(tf.float32, [batch_size, truncated_backprop_length])#a batchsize by backprop matrix, the windeow that things will happen in
@@ -49,6 +50,7 @@ logits_series = [tf.matmul(state,W2) + b2 for state in states_series]#this props
 #the current step propagates the states to their verdicts. It's a two step process
 predictions_series = [tf.nn.softmax(logits) for logits in logits_series]
 losses = [tf.nn.sparse_softmax_cross_entropy_with_logits(logits = logits, labels = labels) for logits, labels in zip(logits_series, label_series)]
+
 #above calculates the loss
 total_loss = tf.reduce_mean(losses)
 tf.summary.scalar("loss", total_loss)
@@ -63,11 +65,12 @@ with tf.Session() as sess:
     for epoch in range(epochs):
         x, y = generateData()
         _current_state = np.zeros((batch_size,state_size))
+
         print("new epoch", epoch)
         for batch in range(num_batches):
             start_place = batch * truncated_backprop_length #this moves the window forwards
             end_place = start_place + truncated_backprop_length #this sets the end of window
-
+            print(sess.run(label_series))
             batchX = x[:,start_place:end_place] #creates batches in window
             batchY = y[:, start_place:end_place] #creates answers array
 
