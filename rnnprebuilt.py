@@ -1,6 +1,6 @@
 import copy, numpy as np
-
-np.random.seed(0)
+import time
+np.random.seed(int(time.time()))
 
 
 # compute sigmoid nonlinearity

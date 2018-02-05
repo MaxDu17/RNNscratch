@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="934021a6-35a4-4b8d-9579-d45e2246ff28" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/RNN medium.py" afterPath="$PROJECT_DIR$/RNN medium.py" />
       <change beforePath="$PROJECT_DIR$/RNNadd.py" afterPath="$PROJECT_DIR$/RNNadd.py" />
+      <change beforePath="$PROJECT_DIR$/rnnprebuilt.py" afterPath="$PROJECT_DIR$/rnnprebuilt.py" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1516070443.LCS-SYR-WEDU" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1516070509.LCS-SYR-WEDU" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1517548515.LCS-SYR-WEDU" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1517548993.LCS-SYR-WEDU" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1517549086.LCS-SYR-WEDU" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1517549885.LCS-SYR-WEDU" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,13 +20,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RNNadd.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RNNadd.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RNNadd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1146">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="400">
+              <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rnnprebuilt.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rnnprebuilt.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -29,8 +47,8 @@
       <file leaf-file-name="RNN medium.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RNN medium.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
+            <state relative-caret-position="221">
+              <caret line="48" column="41" lean-forward="false" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -92,6 +110,8 @@
       <find>download</find>
       <find>dirname</find>
       <find>num_classes</find>
+      <find>summary</find>
+      <find>d)</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -101,7 +121,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/RNN.py" />
-        <option value="$PROJECT_DIR$/rnnprebuilt.py" />
         <option value="$PROJECT_DIR$/testa.py" />
         <option value="$PROJECT_DIR$/scratch.py" />
         <option value="$PROJECT_DIR$/../TENSORFLOWRNNPREVUILT/train.py" />
@@ -110,6 +129,7 @@
         <option value="$PROJECT_DIR$/../../YoutubeDownloader-master/ProcessStarter.py" />
         <option value="$PROJECT_DIR$/RNN medium.py" />
         <option value="$PROJECT_DIR$/RNNadd.py" />
+        <option value="$PROJECT_DIR$/rnnprebuilt.py" />
       </list>
     </option>
   </component>
@@ -189,7 +209,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RNNadd">
+  <component name="RunManager" selected="Python.rnnprebuilt">
     <configuration name="FinalUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -244,6 +264,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="rnnprebuilt" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RNNscratch" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rnnprebuilt.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -262,38 +300,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="testa" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RNNscratch" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testa.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.RNN medium" />
-      <item index="1" class="java.lang.String" itemvalue="Python.testa" />
-      <item index="2" class="java.lang.String" itemvalue="Python.scratch" />
-      <item index="3" class="java.lang.String" itemvalue="Python.FinalUI" />
-      <item index="4" class="java.lang.String" itemvalue="Python.RNNadd" />
+      <item index="1" class="java.lang.String" itemvalue="Python.scratch" />
+      <item index="2" class="java.lang.String" itemvalue="Python.FinalUI" />
+      <item index="3" class="java.lang.String" itemvalue="Python.RNNadd" />
+      <item index="4" class="java.lang.String" itemvalue="Python.rnnprebuilt" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RNNadd" />
-        <item index="1" class="java.lang.String" itemvalue="Python.RNN medium" />
-        <item index="2" class="java.lang.String" itemvalue="Python.FinalUI" />
-        <item index="3" class="java.lang.String" itemvalue="Python.scratch" />
-        <item index="4" class="java.lang.String" itemvalue="Python.testa" />
+        <item index="0" class="java.lang.String" itemvalue="Python.rnnprebuilt" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RNNadd" />
+        <item index="2" class="java.lang.String" itemvalue="Python.RNN medium" />
+        <item index="3" class="java.lang.String" itemvalue="Python.FinalUI" />
+        <item index="4" class="java.lang.String" itemvalue="Python.scratch" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +342,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28896105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43073592" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -340,7 +360,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="8" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -426,13 +448,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rnnprebuilt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -547,22 +562,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/RNNadd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RNN medium.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
+        <state relative-caret-position="221">
+          <caret line="48" column="41" lean-forward="false" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RNNadd.py">
+    <entry file="file://$PROJECT_DIR$/rnnprebuilt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1146">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="34">
+          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
