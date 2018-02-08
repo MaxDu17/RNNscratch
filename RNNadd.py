@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 epochs = 1000
-learning_rate = 0.01
+learning_rate = 0.05
 
 INPUT = 2
 HIDDEN = 16
@@ -19,10 +19,10 @@ for i in range(largest_number):
     zeros = [0]*(8-length)
     int2binary[i] = zeros + bin_carr
 
-W_Hidd = tf.Variable(tf.random_normal(shape = [HIDDEN+INPUT,HIDDEN], stddev = 0.1, dtype =tf.float32), name="hidden_weight")#propagates previous state to current state plus one section for the inputs. Effectively it makes a giant matrix
-B_Hidd = tf.Variable(tf.zeros(shape=[1,HIDDEN]), dtype =tf.float32, name="hidden_bias") #this bias adds onto the hidden next state
+W_Hidd = tf.Variable(tf.random_normal(shape = [HIDDEN+INPUT,HIDDEN], mean = 0, stddev = 0.1, dtype =tf.float32), name="hidden_weight")#propagates previous state to current state plus one section for the inputs. Effectively it makes a giant matrix
+B_Hidd = tf.Variable(tf.zeros(shape=[1,HIDDEN]), dtype =tf.float32,name="hidden_bias") #this bias adds onto the hidden next state
 
-W_Out = tf.Variable(tf.random_normal(shape = [HIDDEN, OUTPUT], stddev = 0.1),dtype =tf.float32,name="Out_weight") #propagates to the end, with output, which is only one thing.
+W_Out = tf.Variable(tf.random_normal(shape = [HIDDEN, OUTPUT], mean = 0 ,stddev = 0.1),dtype =tf.float32,name="Out_weight") #propagates to the end, with output, which is only one thing.
 B_Out = tf.Variable(tf.zeros(shape = [1,1]), dtype =tf.float32, name="Out_bias")
 
 states_list = []
@@ -36,10 +36,11 @@ init_hid_layer = tf.placeholder(tf.float32, shape = [1,HIDDEN],name="hidden_laye
 current_hid_layer = init_hid_layer
 first = True
 for current in iterable_X:
+
     current_flat = tf.reshape(current,[1,INPUT])
     concat_mat = tf.concat([current_flat,current_hid_layer],axis=1)
-    next_hid_layer = tf.matmul(concat_mat,W_Hidd)
-    next_hid_layer = tf.sigmoid(tf.add(next_hid_layer,B_Hidd))
+    next_hid_layer = tf.sigmoid(tf.matmul(concat_mat,W_Hidd) + B_Hidd)
+
     if first:
         next_states_mat = tf.transpose(next_hid_layer)
         first = False
@@ -48,14 +49,11 @@ for current in iterable_X:
     current_states_mat = next_states_mat
     current_hid_layer = next_hid_layer
 
-#np.reshape(states_list,[binary_dim,HIDDEN])
 
-#logit_outputs = [tf.matmul(curr_hid,W_Out)for curr_hid in states_list]
 
-logit_outputs = tf.matmul(tf.transpose(current_states_mat),W_Out)
-softmax_pred = tf.transpose(tf.nn.softmax(logit_outputs,dim=0))
-#loss = tf.square(tf.subtract(logit_outputs, Y))
-loss = tf.nn.softmax_cross_entropy_with_logits(logits=tf.transpose(logit_outputs),labels=Y)
+logit_outputs = tf.matmul(tf.transpose(current_states_mat),W_Out)+B_Out
+
+loss = tf.square(tf.subtract(Y,tf.transpose(logit_outputs)))
 total_loss = tf.reduce_mean(loss)
 
 training = tf.train.AdagradOptimizer(learning_rate).minimize(total_loss)
@@ -66,7 +64,7 @@ tf.summary.scalar("Loss", total_loss)
 summary_op = tf.summary.merge_all()
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    #writer = tf.summary.FileWriter("test_add/", sess.graph)
+
     for epoch in range(epochs):
         a_int = np.random.randint(largest_number/2)
         a = int2binary[a_int]
@@ -81,22 +79,24 @@ with tf.Session() as sess:
 
         pseudo_curr = np.zeros((1,HIDDEN))
         x = np.concatenate((a_np,b_np), axis=0)
-
-       # test = sess.run([current_states_mat],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
-       # print(np.reshape(test,[16,8]))
-
-       # print("break")
-        X__, Y__ , logit__out, predictions,_loss, _total_loss,_,summary = sess.run([X, Y,logit_outputs,softmax_pred,loss, total_loss,training,summary_op], feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})#,Y:c_np,init_hid_layer:pseudo_curr})
-        if epoch %10 ==0:
+        x = np.flip(x, axis = 1)
+        c_np = np.flip(c_np, axis = 1)
+        '''
+        _logit, Y_ = sess.run([logit_outputs, iterable_Y],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
+        print(_logit)
+        print("divide")
+        print(Y_)
+        print("end")
+        '''
+        cur_mat,prediction, _total_loss, _ = sess.run([current_states_mat,logit_outputs, total_loss,training],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
+        
+        if epoch %100 ==0:
 
             print(_total_loss)
-            print(predictions[0])
-            print(Y__[0])
-            print(X__)
-        #writer.add_summary(summary, global_step=epoch)
-        #print(predictions)
-    #writer.close()
-
+            print(prediction)
+            print(c_np)
+            print("sep")
+            #print(cur_mat)
 
 
 

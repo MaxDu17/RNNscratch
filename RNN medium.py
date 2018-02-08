@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-epochs = 100
+epochs = 20
 total_series_length = 50000
 truncated_backprop_length = 15
 state_size = 4 #number of hidden PROPERTIES
@@ -22,16 +22,16 @@ def generateData():
     print(y)
     return (x, y)
 
-batchXPl = tf.placeholder(tf.float32, [batch_size, truncated_backprop_length])#a batchsize by backprop matrix, the windeow that things will happen in
-batchYPl = tf.placeholder(tf.int32, [batch_size, truncated_backprop_length])#labels
+batchXPl = tf.placeholder(tf.float32, [batch_size, truncated_backprop_length],name="in")#a batchsize by backprop matrix, the windeow that things will happen in
+batchYPl = tf.placeholder(tf.int32, [batch_size, truncated_backprop_length],name = "labels")#labels
 
-init_state = tf.placeholder(tf.float32, [batch_size, state_size]) #this is the previous hidden layer
+init_state = tf.placeholder(tf.float32, [batch_size, state_size],name = "initstate") #this is the previous hidden layer
 
-W = tf.Variable(np.random.rand(state_size+1, state_size), dtype =tf.float32) #these are for states AND THE INPUTS (note the +1)
-b = tf.Variable(np.zeros((1,state_size)), dtype=tf.float32)
+W = tf.Variable(np.random.rand(state_size+1, state_size), dtype =tf.float32,name="W") #these are for states AND THE INPUTS (note the +1)
+b = tf.Variable(np.zeros((1,state_size)), dtype=tf.float32,name="b")
 
-W2 = tf.Variable(np.random.rand(state_size, num_classes), dtype =tf.float32) #these are for secondary propagation
-b2 = tf.Variable(np.zeros((1,num_classes)), dtype=tf.float32)
+W2 = tf.Variable(np.random.rand(state_size, num_classes), dtype =tf.float32,name="W2") #these are for secondary propagation
+b2 = tf.Variable(np.zeros((1,num_classes)), dtype=tf.float32,name = "b2")
 
 input_series = tf.unstack(batchXPl, axis  =1)
 label_series = tf.unstack(batchYPl, axis  =1)
@@ -70,7 +70,7 @@ with tf.Session() as sess:
         for batch in range(num_batches):
             start_place = batch * truncated_backprop_length #this moves the window forwards
             end_place = start_place + truncated_backprop_length #this sets the end of window
-            print(sess.run(label_series))
+
             batchX = x[:,start_place:end_place] #creates batches in window
             batchY = y[:, start_place:end_place] #creates answers array
 
