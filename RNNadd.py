@@ -1,8 +1,8 @@
 import tensorflow as tf
 import numpy as np
 
-epochs = 1000
-learning_rate = 0.05
+epochs = 100000
+learning_rate = 0.1
 
 INPUT = 2
 HIDDEN = 16
@@ -94,7 +94,8 @@ with tf.Session() as sess:
 
             print(_total_loss)
             print(prediction)
-            print(c_np)
+
+            print(c)
             print("sep")
             #print(cur_mat)
 
