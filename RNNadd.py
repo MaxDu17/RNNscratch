@@ -64,7 +64,7 @@ tf.summary.scalar("Loss", total_loss)
 summary_op = tf.summary.merge_all()
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-
+    writer = tf.summary.FileWriter("MYRNNGRAPH/", sess.graph)
     for epoch in range(epochs):
         a_int = np.random.randint(largest_number/2)
         a = int2binary[a_int]
@@ -82,17 +82,17 @@ with tf.Session() as sess:
         x = np.flip(x, axis = 1)
         c_np = np.flip(c_np, axis = 1)
 
-        cur_mat,prediction, _total_loss, _ = sess.run([current_states_mat,logit_outputs, total_loss,training],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
-        
+        cur_mat,prediction, _total_loss, _,summary = sess.run([current_states_mat,logit_outputs, total_loss,training,summary_op],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
+        writer.add_summary(summary, global_step=epoch)
         if epoch %5000 ==0:
-
-            print(_total_loss)
-            prediction_rounded = np.round(prediction)
-            print(np.reshape(prediction,[1,8]))
-            print(np.reshape(prediction_rounded,[1,8]))
-            print(c_np)
-            print("sep")
-            #print(cur_mat)
+            print("batch", epoch)
+            print("total loss",_total_loss)
+            prediction_rounded = np.abs(np.round(prediction))
+            print("raw prediction",np.reshape(prediction,[1,8]))
+            print("rounded prediction", np.reshape(prediction_rounded,[1,8]))
+            print("actual answer",c_np)
+            print("---------------")
+    writer.close()
 
 
 
