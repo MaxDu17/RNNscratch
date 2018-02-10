@@ -52,7 +52,7 @@ for current in iterable_X:
 
 
 logit_outputs = tf.matmul(tf.transpose(current_states_mat),W_Out)+B_Out
-
+prediction_outputs = tf.sigmoid(logit_outputs)
 loss = tf.square(tf.subtract(Y,tf.transpose(logit_outputs)))
 total_loss = tf.reduce_mean(loss)
 
@@ -81,19 +81,13 @@ with tf.Session() as sess:
         x = np.concatenate((a_np,b_np), axis=0)
         x = np.flip(x, axis = 1)
         c_np = np.flip(c_np, axis = 1)
-        '''
-        _logit, Y_ = sess.run([logit_outputs, iterable_Y],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
-        print(_logit)
-        print("divide")
-        print(Y_)
-        print("end")
-        '''
-        cur_mat,prediction, _total_loss, _ = sess.run([current_states_mat,logit_outputs, total_loss,training],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
+
+        cur_mat,prediction, _total_loss, _ = sess.run([current_states_mat,prediction_outputs, total_loss,training],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
         
-        if epoch %100 ==0:
+        if epoch %5000 ==0:
 
             print(_total_loss)
-            print(prediction)
+            print(np.reshape(prediction,[1,8]))
 
             print(c)
             print("sep")
