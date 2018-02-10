@@ -87,9 +87,10 @@ with tf.Session() as sess:
         if epoch %5000 ==0:
 
             print(_total_loss)
+            prediction_rounded = np.round(prediction)
             print(np.reshape(prediction,[1,8]))
-
-            print(c)
+            print(np.reshape(prediction_rounded,[1,8]))
+            print(c_np)
             print("sep")
             #print(cur_mat)
 
