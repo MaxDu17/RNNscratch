@@ -82,7 +82,7 @@ with tf.Session() as sess:
         x = np.flip(x, axis = 1)
         c_np = np.flip(c_np, axis = 1)
 
-        cur_mat,prediction, _total_loss, _ = sess.run([current_states_mat,prediction_outputs, total_loss,training],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
+        cur_mat,prediction, _total_loss, _ = sess.run([current_states_mat,logit_outputs, total_loss,training],feed_dict= {X:x,Y:c_np,init_hid_layer:pseudo_curr})
         
         if epoch %5000 ==0:
 
