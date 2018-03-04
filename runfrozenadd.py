@@ -4,7 +4,7 @@ import numpy as np
 from make_sets import Setmaker as SM
 
 set_maker = SM()
-pbfilename = "models/modelv1.pb"
+pbfilename = "models/frozen_modelv1.pb"
 int2binary = {}
 binary_dim = 8
 epochs = 100000
@@ -31,20 +31,20 @@ with tf.Graph().as_default() as graph:
                         return_elements = None,
                         name = "")
 input = graph.get_tensor_by_name("input:0")
-output = graph.get_tensor_by_name("output:0")
+output = graph.get_tensor_by_name("prediction_outputs:0")
 init_hid_layer = graph.get_tensor_by_name("hidden_layer_state:0")
 
 with tf.Session(graph=graph) as sess:
 
-    sess.run(tf.global_variables_initializer())
+
     a_int = np.random.randint(largest_number / 2)
-    a = int2binary[10]
+    a = int2binary[55]
     a_np = np.matrix(a)
     # print(a_np)
     b_int = np.random.randint(largest_number / 2)
-    b = int2binary[20]
+    b = int2binary[99]
     b_np = np.matrix(b)
-    c_int = a_int + b_int
+    c_int = 55+99
     c = int2binary[c_int]
     c_np = np.matrix(c)
 

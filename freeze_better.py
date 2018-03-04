@@ -11,7 +11,7 @@ input_binary = False
 output_node_names = "prediction_outputs"
 restore_op_name = "save/restore_all"
 filename_tensor_name = "save/Const:0"
-output_frozen_graph_name = 'scratch/frozen_'+MODEL_NAME+'.pb'
+output_frozen_graph_name = 'models/frozen_'+MODEL_NAME+'.pb'
 output_optimized_graph_name = 'optimized_'+MODEL_NAME+'.pb'
 clear_devices = True
 
