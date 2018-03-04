@@ -51,8 +51,8 @@ for current in iterable_X:
 
 
 
-logit_outputs = tf.matmul(tf.transpose(current_states_mat),W_Out)+B_Out
-prediction_outputs = tf.sigmoid(logit_outputs,name = "prediction_outputs")
+
+logit_outputs = tf.add(tf.matmul(tf.transpose(current_states_mat),W_Out),B_Out,name = "prediction_outputs")
 
 
 saver = tf.train.Saver()
@@ -76,7 +76,7 @@ with tf.Session() as sess:
     x = np.flip(x, axis = 1)
     c_np = np.flip(c_np, axis = 1)
 
-    prediction = sess.run(prediction_outputs,feed_dict= {X:x,init_hid_layer:pseudo_curr})
+    prediction = sess.run(logit_outputs,feed_dict= {X:x,init_hid_layer:pseudo_curr})
 
     print(c_np)
     print(prediction)
