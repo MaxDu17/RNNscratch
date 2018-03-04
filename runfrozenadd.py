@@ -1,9 +1,7 @@
 import tensorflow as tf
 import os
 import numpy as np
-from make_sets import Setmaker as SM
 
-set_maker = SM()
 pbfilename = "models/frozen_modelv1.pb"
 int2binary = {}
 binary_dim = 8

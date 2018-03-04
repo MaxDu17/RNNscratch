@@ -3337,7 +3337,7 @@ node {
   }
 }
 node {
-  name: "add_8"
+  name: "prediction_outputs"
   op: "Add"
   input: "MatMul_8"
   input: "Out_bias/read"
@@ -3349,20 +3349,9 @@ node {
   }
 }
 node {
-  name: "prediction_outputs"
-  op: "Sigmoid"
-  input: "add_8"
-  attr {
-    key: "T"
-    value {
-      type: DT_FLOAT
-    }
-  }
-}
-node {
   name: "transpose_9/Rank"
   op: "Rank"
-  input: "add_8"
+  input: "prediction_outputs"
   attr {
     key: "T"
     value {
@@ -3473,7 +3462,7 @@ node {
 node {
   name: "transpose_9"
   op: "Transpose"
-  input: "add_8"
+  input: "prediction_outputs"
   input: "transpose_9/sub_1"
   attr {
     key: "T"
@@ -4008,7 +3997,7 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/Shape"
+  name: "gradients/prediction_outputs_grad/Shape"
   op: "Const"
   attr {
     key: "dtype"
@@ -4032,7 +4021,7 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/Shape_1"
+  name: "gradients/prediction_outputs_grad/Shape_1"
   op: "Const"
   attr {
     key: "dtype"
@@ -4056,10 +4045,10 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/BroadcastGradientArgs"
+  name: "gradients/prediction_outputs_grad/BroadcastGradientArgs"
   op: "BroadcastGradientArgs"
-  input: "gradients/add_8_grad/Shape"
-  input: "gradients/add_8_grad/Shape_1"
+  input: "gradients/prediction_outputs_grad/Shape"
+  input: "gradients/prediction_outputs_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -4068,10 +4057,10 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/Sum"
+  name: "gradients/prediction_outputs_grad/Sum"
   op: "Sum"
   input: "gradients/transpose_9_grad/transpose"
-  input: "gradients/add_8_grad/BroadcastGradientArgs"
+  input: "gradients/prediction_outputs_grad/BroadcastGradientArgs"
   attr {
     key: "T"
     value {
@@ -4092,10 +4081,10 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/Reshape"
+  name: "gradients/prediction_outputs_grad/Reshape"
   op: "Reshape"
-  input: "gradients/add_8_grad/Sum"
-  input: "gradients/add_8_grad/Shape"
+  input: "gradients/prediction_outputs_grad/Sum"
+  input: "gradients/prediction_outputs_grad/Shape"
   attr {
     key: "T"
     value {
@@ -4110,10 +4099,10 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/Sum_1"
+  name: "gradients/prediction_outputs_grad/Sum_1"
   op: "Sum"
   input: "gradients/transpose_9_grad/transpose"
-  input: "gradients/add_8_grad/BroadcastGradientArgs:1"
+  input: "gradients/prediction_outputs_grad/BroadcastGradientArgs:1"
   attr {
     key: "T"
     value {
@@ -4134,10 +4123,10 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/Reshape_1"
+  name: "gradients/prediction_outputs_grad/Reshape_1"
   op: "Reshape"
-  input: "gradients/add_8_grad/Sum_1"
-  input: "gradients/add_8_grad/Shape_1"
+  input: "gradients/prediction_outputs_grad/Sum_1"
+  input: "gradients/prediction_outputs_grad/Shape_1"
   attr {
     key: "T"
     value {
@@ -4152,16 +4141,16 @@ node {
   }
 }
 node {
-  name: "gradients/add_8_grad/tuple/group_deps"
+  name: "gradients/prediction_outputs_grad/tuple/group_deps"
   op: "NoOp"
-  input: "^gradients/add_8_grad/Reshape"
-  input: "^gradients/add_8_grad/Reshape_1"
+  input: "^gradients/prediction_outputs_grad/Reshape"
+  input: "^gradients/prediction_outputs_grad/Reshape_1"
 }
 node {
-  name: "gradients/add_8_grad/tuple/control_dependency"
+  name: "gradients/prediction_outputs_grad/tuple/control_dependency"
   op: "Identity"
-  input: "gradients/add_8_grad/Reshape"
-  input: "^gradients/add_8_grad/tuple/group_deps"
+  input: "gradients/prediction_outputs_grad/Reshape"
+  input: "^gradients/prediction_outputs_grad/tuple/group_deps"
   attr {
     key: "T"
     value {
@@ -4172,16 +4161,16 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@gradients/add_8_grad/Reshape"
+        s: "loc:@gradients/prediction_outputs_grad/Reshape"
       }
     }
   }
 }
 node {
-  name: "gradients/add_8_grad/tuple/control_dependency_1"
+  name: "gradients/prediction_outputs_grad/tuple/control_dependency_1"
   op: "Identity"
-  input: "gradients/add_8_grad/Reshape_1"
-  input: "^gradients/add_8_grad/tuple/group_deps"
+  input: "gradients/prediction_outputs_grad/Reshape_1"
+  input: "^gradients/prediction_outputs_grad/tuple/group_deps"
   attr {
     key: "T"
     value {
@@ -4192,7 +4181,7 @@ node {
     key: "_class"
     value {
       list {
-        s: "loc:@gradients/add_8_grad/Reshape_1"
+        s: "loc:@gradients/prediction_outputs_grad/Reshape_1"
       }
     }
   }
@@ -4200,7 +4189,7 @@ node {
 node {
   name: "gradients/MatMul_8_grad/MatMul"
   op: "MatMul"
-  input: "gradients/add_8_grad/tuple/control_dependency"
+  input: "gradients/prediction_outputs_grad/tuple/control_dependency"
   input: "Out_weight/read"
   attr {
     key: "T"
@@ -4225,7 +4214,7 @@ node {
   name: "gradients/MatMul_8_grad/MatMul_1"
   op: "MatMul"
   input: "transpose_8"
-  input: "gradients/add_8_grad/tuple/control_dependency"
+  input: "gradients/prediction_outputs_grad/tuple/control_dependency"
   attr {
     key: "T"
     value {
@@ -9125,7 +9114,7 @@ node {
   input: "Out_bias"
   input: "Out_bias/Adagrad"
   input: "Adagrad/learning_rate"
-  input: "gradients/add_8_grad/tuple/control_dependency_1"
+  input: "gradients/prediction_outputs_grad/tuple/control_dependency_1"
   attr {
     key: "T"
     value {
