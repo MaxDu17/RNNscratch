@@ -1,16 +1,7 @@
 import os
 import sys
 import tensorflow as tf
-class Hyperparameters:
-    INPUT_LAYER = 43
-    HIDDEN_LAYER = 100 #Modify??
-    OUTPUT_LAYER = 3
-    NUM_EPOCHS = 10000
-    #NUM_EPOCHS = 1
-    BATCH_NUMBER = 240
-    LEARNING_RATE = 0.1
-    VALIDATION_NUMBER = 30
-    TEST_NUMBER = 30
+
 HYP = Hyperparameters()
 def create_inference_graph():
     W_Hidd = tf.Variable(tf.random_normal(shape=[HIDDEN + INPUT, HIDDEN], mean=0, stddev=0.1, dtype=tf.float32),
@@ -51,15 +42,15 @@ create_inference_graph()
 with tf.Session() as sess:
 
     sess.run(tf.global_variables_initializer())
-    saver = tf.train.import_meta_graph('Best/rough_run-9500.meta', clear_devices=True)
-    saver.restore(sess, "Best/rough_run-9500")
+    saver = tf.train.import_meta_graph('models/test-95000.meta', clear_devices=True)
+    saver.restore(sess, "models/test-95000")
     frozen_graph_def = tf.graph_util.convert_variables_to_constants(
         sess, sess.graph_def, ['output']
     )
     tf.train.write_graph(
         frozen_graph_def,
-        os.path.dirname("Best/modelv1.pb"),
-        os.path.basename("Best/modelv1.pb"),
+        os.path.dirname("models/modelv1.pb"),
+        os.path.basename("models/modelv1.pb"),
         as_text=False
     )
 
