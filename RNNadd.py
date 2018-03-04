@@ -52,7 +52,7 @@ for current in iterable_X:
 
 
 logit_outputs = tf.matmul(tf.transpose(current_states_mat),W_Out)+B_Out
-prediction_outputs = tf.sigmoid(logit_outputs)
+prediction_outputs = tf.sigmoid(logit_outputs,name = "prediction_outputs")
 loss = tf.square(tf.subtract(Y,tf.transpose(logit_outputs)))
 total_loss = tf.reduce_mean(loss)
 
