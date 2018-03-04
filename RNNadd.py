@@ -62,6 +62,7 @@ tf.summary.histogram("W_Hidd", W_Hidd)
 tf.summary.histogram("W_Out", W_Out)
 tf.summary.scalar("Loss", total_loss)
 summary_op = tf.summary.merge_all()
+saver = tf.train.Saver()
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     writer = tf.summary.FileWriter("MYRNNGRAPH/", sess.graph)
@@ -92,6 +93,7 @@ with tf.Session() as sess:
             print("rounded prediction", np.reshape(prediction_rounded,[1,8]))
             print("actual answer",c_np)
             print("---------------")
+            saver.save(sess, "models/test", global_step=epoch)
     writer.close()
 
 
