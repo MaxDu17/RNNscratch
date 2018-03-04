@@ -1,8 +1,16 @@
 import os
 import sys
 import tensorflow as tf
+epochs = 100000
+learning_rate = 0.1
 
-HYP = Hyperparameters()
+INPUT = 2
+HIDDEN = 16
+OUTPUT = 1
+
+int2binary = {}
+binary_dim = 8
+
 def create_inference_graph():
     W_Hidd = tf.Variable(tf.random_normal(shape=[HIDDEN + INPUT, HIDDEN], mean=0, stddev=0.1, dtype=tf.float32),
                          name="hidden_weight")  # propagates previous state to current state plus one section for the inputs. Effectively it makes a giant matrix
