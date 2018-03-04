@@ -3349,7 +3349,7 @@ node {
   }
 }
 node {
-  name: "Sigmoid_8"
+  name: "prediction_outputs"
   op: "Sigmoid"
   input: "add_8"
   attr {
