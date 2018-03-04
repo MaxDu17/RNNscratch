@@ -66,6 +66,7 @@ saver = tf.train.Saver()
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
     writer = tf.summary.FileWriter("MYRNNGRAPH/", sess.graph)
+    tf.train.write_graph(sess.graph_def, '.', 'models/bigmodel.pbtxt')
     for epoch in range(epochs):
         a_int = np.random.randint(largest_number/2)
         a = int2binary[a_int]

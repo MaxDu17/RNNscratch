@@ -12,6 +12,7 @@ int2binary = {}
 binary_dim = 8
 
 def create_inference_graph():
+
     W_Hidd = tf.Variable(tf.random_normal(shape=[HIDDEN + INPUT, HIDDEN], mean=0, stddev=0.1, dtype=tf.float32),
                          name="hidden_weight")  # propagates previous state to current state plus one section for the inputs. Effectively it makes a giant matrix
     B_Hidd = tf.Variable(tf.zeros(shape=[1, HIDDEN]), dtype=tf.float32,
@@ -21,8 +22,6 @@ def create_inference_graph():
                         name="Out_weight")  # propagates to the end, with output, which is only one thing.
     B_Out = tf.Variable(tf.zeros(shape=[1, 1]), dtype=tf.float32, name="Out_bias")
 
-    states_list = []
-    output_list = []
 
     X = tf.placeholder(tf.float32, shape=[2, binary_dim], name="input")
 
@@ -46,11 +45,13 @@ def create_inference_graph():
         current_hid_layer = next_hid_layer
     logit_outputs = tf.matmul(tf.transpose(current_states_mat),W_Out)+B_Out
     prediction_outputs = tf.sigmoid(logit_outputs, name = "output")
+
 create_inference_graph()
 with tf.Session() as sess:
-
+    saver = tf.train.Saver()
     sess.run(tf.global_variables_initializer())
-    saver = tf.train.import_meta_graph('models/test-95000.meta', clear_devices=True)
+
+    #saver = tf.train.import_meta_graph('models/test-95000.meta', clear_devices=True)
     saver.restore(sess, "models/test-95000")
     frozen_graph_def = tf.graph_util.convert_variables_to_constants(
         sess, sess.graph_def, ['output']
